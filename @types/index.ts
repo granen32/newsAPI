@@ -20,3 +20,8 @@ export interface CategoriesProps {
   name: string;
   text: string;
 }
+
+export interface CategoriesWrapProps {
+  category: CategoriesProps;
+  onSelect: Function;
+}

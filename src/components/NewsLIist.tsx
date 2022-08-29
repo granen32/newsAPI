@@ -22,7 +22,7 @@ const NewsLIist = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(!loading);
+      setLoading(loading);
       try {
         const response = await axios.get(
           "https://newsapi.org/v2/top-headlines?country=kr&apiKey=8ecfcbbb387c4e7bae8ffb59f5282383"

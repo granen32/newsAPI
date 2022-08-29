@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { CategoriesWrapProps } from "../../@types";
 const categories = [
   {
     name: "all",
@@ -56,11 +56,13 @@ const Category = styled.div`
   }
 `;
 
-const Categories = () => {
+const Categories = ({ category, onSelect }: CategoriesWrapProps) => {
   return (
     <CategoriesContainer>
       {categories.map((item) => (
-        <Category key={item.name}>{item.text}</Category>
+        <Category key={item.name} onClick={() => onSelect(item.name)}>
+          {item.text}
+        </Category>
       ))}
     </CategoriesContainer>
   );
