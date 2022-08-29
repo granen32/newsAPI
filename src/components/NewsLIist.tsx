@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { ArticleProps } from "../../@types/";
+import { ArticleProps, CategoriesWrapProps } from "../../@types/";
 import NewsItems from "./NewsItems";
 
 const NewsListContainer = styled.div`
@@ -17,23 +17,26 @@ const NewsListContainer = styled.div`
   }
 `;
 
-const NewsLIist = () => {
+const NewsLIist = ({ category }: CategoriesWrapProps) => {
   const [articles, setArticles] = useState<ArticleProps[]>([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(loading);
+      setLoading(!loading);
       try {
+        const query = category === "all" ? `` : `&category=${category}`;
         const response = await axios.get(
-          "https://newsapi.org/v2/top-headlines?country=kr&apiKey=8ecfcbbb387c4e7bae8ffb59f5282383"
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=8ecfcbbb387c4e7bae8ffb59f5282383`
         );
         setArticles(response.data.articles);
+        console.log(query);
       } catch (e) {
         console.log(e);
       }
     };
     fetchData();
-  }, []);
+  }, [category]);
+
   // 아직 articles 값이 설정되어 있지 않을 때
   if (loading) {
     return <NewsListContainer>...대기중</NewsListContainer>;
@@ -42,7 +45,6 @@ const NewsLIist = () => {
   if (!articles) {
     return null;
   }
-  console.log(articles);
   return (
     <>
       <NewsListContainer>

@@ -1,6 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { CategoriesWrapProps } from "../../@types";
+interface CSSPROPS {
+  active: boolean;
+}
+
 const categories = [
   {
     name: "all",
@@ -54,13 +58,28 @@ const Category = styled.div`
   & + & {
     margin-left: 10px;
   }
+  ${(props: CSSPROPS) =>
+    props.active &&
+    css`
+      font-weight: 600;
+      border-bottom: 2px solid #22b8cf;
+      color: #22b8cf;
+
+      &:hover {
+        color: #3bc9db;
+      }
+    `}
 `;
 
 const Categories = ({ category, onSelect }: CategoriesWrapProps) => {
   return (
     <CategoriesContainer>
       {categories.map((item) => (
-        <Category key={item.name} onClick={() => onSelect(item.name)}>
+        <Category
+          key={item.name}
+          active={category === item.name}
+          onClick={() => onSelect(item.name)}
+        >
           {item.text}
         </Category>
       ))}
