@@ -6,10 +6,17 @@ export interface newsApi {
 }
 
 export interface ArticleProps {
-  article: {
-    title: string;
-    description: string;
-    url: string;
-    urlToImage: string;
-  };
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+}
+
+export interface ArticleWrapProps {
+  articles: ArticleProps;
+}
+
+export interface CategoriesProps {
+  name: string;
+  text: string;
 }

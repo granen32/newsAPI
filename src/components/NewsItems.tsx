@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ArticleProps } from "../../@types/index";
+import { ArticleWrapProps } from "../../@types/index";
 const NewsItemContainer = styled.div`
   display: flex;
   .thumbnail {
@@ -24,14 +24,14 @@ const NewsItemContainer = styled.div`
       margin-top: 5px;
       white-space: normal;
     }
-    & + & {
-      margin-top: 30px;
-    }
+  }
+  & + & {
+    margin-top: 30px;
   }
 `;
 
-const NewsItems = ({ article }: ArticleProps) => {
-  const { title, description, url, urlToImage } = article;
+const NewsItems = ({ articles }: ArticleWrapProps) => {
+  const { title, description, url, urlToImage } = articles;
   return (
     <>
       <NewsItemContainer>
