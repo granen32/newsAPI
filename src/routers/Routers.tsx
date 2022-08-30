@@ -1,7 +1,8 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NewsPage from "../src/pages/NewsPage";
-function App() {
+import NewsPage from "../pages/NewsPage";
+import { useParams } from "react-router-dom";
+import { ReactNode } from "react";
+const Routers = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
@@ -11,6 +12,6 @@ function App() {
       </BrowserRouter>
     </>
   );
-}
+};
 
-export default App;
+export default Routers;

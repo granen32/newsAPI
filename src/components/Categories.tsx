@@ -1,10 +1,6 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { CategoriesWrapProps } from "../../@types";
-interface CSSPROPS {
-  active: boolean;
-}
-
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 const categories = [
   {
     name: "all",
@@ -58,30 +54,15 @@ const Category = styled.div`
   & + & {
     margin-left: 10px;
   }
-  ${(props: CSSPROPS) =>
-    props.active &&
-    css`
-      font-weight: 600;
-      border-bottom: 2px solid #22b8cf;
-      color: #22b8cf;
-
-      &:hover {
-        color: #3bc9db;
-      }
-    `}
 `;
 
-const Categories = ({ category, onSelect }: CategoriesWrapProps) => {
+const Categories = () => {
   return (
     <CategoriesContainer>
       {categories.map((item) => (
-        <Category
-          key={item.name}
-          active={category === item.name}
-          onClick={() => onSelect(item.name)}
-        >
+        <Link to={item.name === "all" ? "/" : `${item.name}`} key={item.name}>
           {item.text}
-        </Category>
+        </Link>
       ))}
     </CategoriesContainer>
   );

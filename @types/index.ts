@@ -23,5 +23,8 @@ export interface CategoriesProps {
 
 export interface CategoriesWrapProps {
   category: string;
-  onSelect?: Function;
+}
+
+export interface CategoriProps {
+  name: string;
 }

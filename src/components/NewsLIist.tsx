@@ -29,7 +29,7 @@ const NewsLIist = ({ category }: CategoriesWrapProps) => {
           `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=8ecfcbbb387c4e7bae8ffb59f5282383`
         );
         setArticles(response.data.articles);
-        console.log(query);
+        console.log(response.data);
       } catch (e) {
         console.log(e);
       }
