@@ -1,14 +1,10 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NewsPage from "../src/pages/NewsPage";
+import { Route } from "react-router";
+import NewsPage from "./pages/NewsPage";
 function App() {
   return (
     <>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Routes>
-          <Route path="/" element={<NewsPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Route path="/:category?" component={NewsPage} />
     </>
   );
 }

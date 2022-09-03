@@ -1,12 +1,13 @@
 import React from "react";
 import Categories from "../components/Categories";
 import NewsLIist from "../components/NewsLIist";
-import { useParams } from "react-router-dom";
-const NewsPage = () => {
+import { RouteComponentProps } from "react-router";
+interface MatchParams {
+  category: string;
+}
+const NewsPage = ({ match }: RouteComponentProps<MatchParams>) => {
   // 카테고리 매치시키기
-  const { params } = useParams();
-  const category = params || "all";
-  console.log(params);
+  const category = match.params.category || "all";
   return (
     <>
       <Categories />
